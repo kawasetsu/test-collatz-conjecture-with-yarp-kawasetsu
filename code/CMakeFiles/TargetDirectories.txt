@@ -1,0 +1,6 @@
+C:/Users/kawasetsu/Documents/GitHub/test-collatz-conjecture-with-yarp-kawasetsu/code/CMakeFiles/ALL_BUILD.dir
+C:/Users/kawasetsu/Documents/GitHub/test-collatz-conjecture-with-yarp-kawasetsu/code/CMakeFiles/ZERO_CHECK.dir
+C:/Users/kawasetsu/Documents/GitHub/test-collatz-conjecture-with-yarp-kawasetsu/code/client/CMakeFiles/client.dir
+C:/Users/kawasetsu/Documents/GitHub/test-collatz-conjecture-with-yarp-kawasetsu/code/client/CMakeFiles/ALL_BUILD.dir
+C:/Users/kawasetsu/Documents/GitHub/test-collatz-conjecture-with-yarp-kawasetsu/code/server/CMakeFiles/server.dir
+C:/Users/kawasetsu/Documents/GitHub/test-collatz-conjecture-with-yarp-kawasetsu/code/server/CMakeFiles/ALL_BUILD.dir

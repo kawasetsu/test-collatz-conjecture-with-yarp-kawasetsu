@@ -1,0 +1,16 @@
+﻿2016/12/20 18:16:02 にビルドを開始しました。
+     1>ノード 2 上のプロジェクト "C:\Users\kawasetsu\Documents\GitHub\test-collatz-conjecture-with-yarp-kawasetsu\code\client\client.vcxproj" (Build ターゲット)。
+     1>CustomBuild:
+         Building Custom Rule C:/Users/kawasetsu/Documents/GitHub/test-collatz-conjecture-with-yarp-kawasetsu/code/client/CMakeLists.txt
+         CMake does not need to re-run because C:\Users\kawasetsu\Documents\GitHub\test-collatz-conjecture-with-yarp-kawasetsu\code\client\CMakeFiles\generate.stamp is up-to-date.
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Program Files (x86)\robotology\yarp-2.3.66\include" /Zi /nologo /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /GR /Fo"client.dir\Debug\\" /Fd"client.dir\Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt "C:\Users\kawasetsu\Documents\GitHub\test-collatz-conjecture-with-yarp-kawasetsu\code\client\client.cpp"
+         client.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\kawasetsu\Documents\GitHub\test-collatz-conjecture-with-yarp-kawasetsu\code\client\Debug\client.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib "C:\Program Files (x86)\robotology\yarp-2.3.66\lib\YARP_mathd.lib" "C:\Program Files (x86)\robotology\yarp-2.3.66\lib\YARP_devd.lib" "C:\Program Files (x86)\robotology\yarp-2.3.66\lib\YARP_initd.lib" "C:\Program Files (x86)\robotology\yarp-2.3.66\lib\YARP_named.lib" "C:\Program Files (x86)\robotology\yarp-2.3.66\lib\YARP_sigd.lib" "C:\Program Files (x86)\robotology\yarp-2.3.66\lib\YARP_OSd.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/kawasetsu/Documents/GitHub/test-collatz-conjecture-with-yarp-kawasetsu/code/client/Debug/client.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/kawasetsu/Documents/GitHub/test-collatz-conjecture-with-yarp-kawasetsu/code/client/Debug/client.lib" /MACHINE:X86 /SAFESEH  /machine:X86 client.dir\Debug\client.obj
+         client.vcxproj -> C:\Users\kawasetsu\Documents\GitHub\test-collatz-conjecture-with-yarp-kawasetsu\code\client\Debug\client.exe
+     1>プロジェクト "C:\Users\kawasetsu\Documents\GitHub\test-collatz-conjecture-with-yarp-kawasetsu\code\client\client.vcxproj" (Build ターゲット) のビルドが完了しました。
+
+ビルドに成功しました。
+
+経過時間 00:00:03.64
