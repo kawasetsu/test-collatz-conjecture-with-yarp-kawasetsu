@@ -14,10 +14,9 @@ int main(int argc, char * argv[])
 	const char *charName = argv[1];
 
     Network yarp;	//initialize yarp
+    Semaphore sem;
     RpcClient portP;
     portP.open(charName);
-    Bottle botRequest;
-    Bottle botResponse;
     
 	int intN = 0, intTh = 0;
 
@@ -48,7 +47,7 @@ int main(int argc, char * argv[])
 						intTempN = intTempN * 3 + 1;
 					}
 				}
-				cout << "finished" << endl;
+				//cout << "finished" << endl;
 			}else{
 				cout << "receiced another message" << endl;
 			}
