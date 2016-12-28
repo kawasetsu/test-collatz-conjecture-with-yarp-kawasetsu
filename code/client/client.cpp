@@ -15,7 +15,7 @@ int main(int argc, char * argv[])
 
     Network yarp;	//initialize yarp
     Semaphore sem;
-    RpcClient portP;
+    Port portP;
     portP.open(charName);
     
 	int intN = 0, intTh = 0;
@@ -27,19 +27,22 @@ int main(int argc, char * argv[])
 		}else{
 		    Bottle botRequest;
 		    Bottle botResponse;
+
+		    //make request and send it
 			botRequest.addString("vocab_req");
 			botRequest.addInt(intN);
-			//cout << "intN=" << intN << endl;
-
 			portP.write(botRequest, botResponse);	//request and wait response
 
-			if(botResponse.get(0) == "vocab_item"){
+			//cout << "intN=" << intN << endl;
+
+			if(botResponse.get(0) == "vocab_item"){		//check the identifier of the received message
 				intN = botResponse.get(1).asInt();
 				intTh = botResponse.get(2).asInt();
 				cout << "input number:" << intN << ", input threshold:" << intTh << endl;
 
+				//calculate collaz conjecture
 				int intTempN = intN;
-				while(intTempN > intTh){
+				while(intTempN > intTh){	//calculation result becomes below threshold
 					if(intTempN % 2 == 0){
 						intTempN = intTempN / 2;
 					}
