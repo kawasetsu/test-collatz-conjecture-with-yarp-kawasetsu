@@ -1,6 +1,6 @@
 #include <iostream>
 #include <yarp/os/all.h>
-#include "../common/vocabs.hpp"
+#include "RFMC.hpp"
 
 using namespace std;
 using namespace yarp::os;
@@ -8,58 +8,18 @@ using namespace yarp::os;
 int main(int argc, char * argv[])
 {
 	if(argc<2){
-		cout << "Please supply a port name for client" << endl;
+		cout << "Please supply a port name of client, for example: --name /c1" << endl;
 		return 1;
 	}
 
-	const char *charName = argv[1];
+	MyModule module;	//create module for maneging message
 
-    Network yarp;	//initialize yarp
-    RpcClient portP;
-    portP.open(charName);
-    
-    int intN = 0, intTh = 0;
-	
-	cout << "Trying to connect to server" << endl;
-	yarp.connect(charName, "/server");
-
-	if(portP.getOutputCount() == 0){
-		cout << "cannot connect to /server" << endl;
-		return 0;
-	}
-
-	while(true){
-		Bottle botRequest;
-		Bottle botResponse;
-
-		//make request and send it
-		botRequest.addInt(COLLATZ_VOCAB_REQ_ITEM);
-		botRequest.addInt(intN);
-		portP.write(botRequest, botResponse);	//request and wait response
-
-		//cout << "intN=" << intN << endl;
-
-		if(botResponse.get(0).asInt() == COLLATZ_VOCAB_ITEM){		//check the identifier of the received message
-			intN = botResponse.get(1).asInt();
-			intTh = botResponse.get(2).asInt();
-			cout << "input number:" << intN << ", input threshold:" << intTh << endl;
-
-			//calculate collaz conjecture
-			int intTempN = intN;
-			while(intTempN > intTh){	//calculation result becomes below threshold
-				if(intTempN % 2 == 0){
-					intTempN = intTempN / 2;
-				}
-				else{
-					intTempN = intTempN * 3 + 1;
-				}
-			}
-			//cout << "finished" << endl;
-		}else{
-			cout << "receiced another message" << endl;
-		}
-		Time::delay(0.01);
-	}
+    /* prepare and configure the resource finder */
+    ResourceFinder rf;
+    rf.configure(argc, argv);
+    rf.setVerbose(true);
+    cout << "Configuring and starting module. \n";
+    module.runModule(rf);   // This calls configure(rf) and, upon success, the module execution begins with a call to updateModule()
 
 	return 0;
 }
