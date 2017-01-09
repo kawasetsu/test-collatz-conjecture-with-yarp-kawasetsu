@@ -1,16 +1,23 @@
-﻿2016/12/29 1:08:24 にビルドを開始しました。
+﻿2017/01/08 7:34:48 にビルドを開始しました。
      1>ノード 3 上のプロジェクト "C:\Users\kawasetsu\Documents\GitHub\test-collatz-conjecture-with-yarp-kawasetsu\code\server\server.vcxproj" (Build ターゲット)。
      1>CustomBuild:
          Building Custom Rule C:/Users/kawasetsu/Documents/GitHub/test-collatz-conjecture-with-yarp-kawasetsu/code/server/CMakeLists.txt
          CMake does not need to re-run because C:\Users\kawasetsu\Documents\GitHub\test-collatz-conjecture-with-yarp-kawasetsu\code\server\CMakeFiles\generate.stamp is up-to-date.
        ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Program Files (x86)\robotology\yarp-2.3.66\include" /Zi /nologo /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /GR /Fo"server.dir\Debug\\" /Fd"server.dir\Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt "C:\Users\kawasetsu\Documents\GitHub\test-collatz-conjecture-with-yarp-kawasetsu\code\server\server.cpp"
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Program Files (x86)\robotology\yarp-2.3.66\include" /Zi /nologo /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /GR /Fo"server.dir\Debug\\" /Fd"server.dir\Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt "C:\Users\kawasetsu\Documents\GitHub\test-collatz-conjecture-with-yarp-kawasetsu\code\server\server.cpp" "C:\Users\kawasetsu\Documents\GitHub\test-collatz-conjecture-with-yarp-kawasetsu\code\server\RFMS.cpp" "C:\Users\kawasetsu\Documents\GitHub\test-collatz-conjecture-with-yarp-kawasetsu\code\server\fifo.cpp"
          server.cpp
+         RFMS.cpp
+         fifo.cpp
+     1>C:\Users\kawasetsu\Documents\GitHub\test-collatz-conjecture-with-yarp-kawasetsu\code\server\fifo.cpp(41): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
+     1>C:\Users\kawasetsu\Documents\GitHub\test-collatz-conjecture-with-yarp-kawasetsu\code\server\fifo.cpp(55): warning C4018: '<' : signed と unsigned の数値を比較しようとしました。
+         コードを生成中...
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\kawasetsu\Documents\GitHub\test-collatz-conjecture-with-yarp-kawasetsu\code\server\Debug\server.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib "C:\Program Files (x86)\robotology\yarp-2.3.66\lib\YARP_mathd.lib" "C:\Program Files (x86)\robotology\yarp-2.3.66\lib\YARP_devd.lib" "C:\Program Files (x86)\robotology\yarp-2.3.66\lib\YARP_initd.lib" "C:\Program Files (x86)\robotology\yarp-2.3.66\lib\YARP_named.lib" "C:\Program Files (x86)\robotology\yarp-2.3.66\lib\YARP_sigd.lib" "C:\Program Files (x86)\robotology\yarp-2.3.66\lib\YARP_OSd.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/kawasetsu/Documents/GitHub/test-collatz-conjecture-with-yarp-kawasetsu/code/server/Debug/server.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/kawasetsu/Documents/GitHub/test-collatz-conjecture-with-yarp-kawasetsu/code/server/Debug/server.lib" /MACHINE:X86 /SAFESEH  /machine:X86 server.dir\Debug\server.obj
+         server.dir\Debug\RFMS.obj
+         server.dir\Debug\fifo.obj
          server.vcxproj -> C:\Users\kawasetsu\Documents\GitHub\test-collatz-conjecture-with-yarp-kawasetsu\code\server\Debug\server.exe
      1>プロジェクト "C:\Users\kawasetsu\Documents\GitHub\test-collatz-conjecture-with-yarp-kawasetsu\code\server\server.vcxproj" (Build ターゲット) のビルドが完了しました。
 
 ビルドに成功しました。
 
-経過時間 00:00:32.46
+経過時間 00:00:13.20
