@@ -9,12 +9,13 @@ using namespace yarp::os;
 
 double MyModule::getPeriod()
 {
-    return 5.0;     // module periodicity (seconds), called implicitly by the module.
+    return 1.0;     // module periodicity (seconds), called implicitly by the module.
 }
 
 // This is our main function. Will be called periodically every getPeriod() seconds
 bool MyModule::updateModule()
 {
+
     Fifo.FIFO_show();
     return true;
 }
@@ -23,7 +24,9 @@ bool MyModule::updateModule()
 bool MyModule::respond(const Bottle& botRequest, Bottle& botCommand)
 {
     if(botRequest.get(0).asInt() == COLLATZ_VOCAB_REQ_ITEM){           //check the header of received messages
+        Sem.wait();
         if(botRequest.get(1).asInt() != 0){                     //first connection from client sends 0, so skip
+            cout << "received num=" << botRequest.get(1).asInt() << endl;
             Fifo.delete_element(botRequest.get(1).asInt());     //delete the received element from FIFO
         }
             
@@ -35,6 +38,7 @@ bool MyModule::respond(const Bottle& botRequest, Bottle& botCommand)
         botCommand.addInt(COLLATZ_VOCAB_ITEM);
         botCommand.addInt(intCNT);
         botCommand.addInt(Fifo.head_value()-1);
+        Sem.post();
         return true;
     }
     else{
