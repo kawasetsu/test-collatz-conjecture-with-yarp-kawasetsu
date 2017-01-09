@@ -8,7 +8,7 @@ cmake_minimum_required(VERSION 2.8.9)
 find_package(YARP REQUIRED)
 
 #add YARP include directories
-include_directories(${YARP_INCLUDE_DIRS})
+include_directories(include ${YARP_INCLUDE_DIRS})
 
 #set up my program
 add_executable(client client.cpp)

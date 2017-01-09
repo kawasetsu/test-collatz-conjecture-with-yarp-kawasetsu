@@ -40,7 +40,8 @@ void FIFO::delete_element(int intNatural)	//delete the element of FIFO corespoin
 		Sema.wait();
 		for(int i = 0; i < vectFIFO.size(); i++){
 			if(intNatural == vectFIFO[i]){
-				vectFIFO.erase(vectFIFO.begin()+i);				
+				vectFIFO.erase(vectFIFO.begin()+i);
+				break;		
 			}
 		}
 		Sema.post();
