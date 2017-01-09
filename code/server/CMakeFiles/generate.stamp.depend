@@ -1,9 +1,0 @@
-# CMake generation dependency list for this directory.
-C:/Users/kawasetsu/Documents/GitHub/test-collatz-conjecture-with-yarp-kawasetsu/code/server/CMakeLists.txt
-C:/Program Files (x86)/robotology/yarp-2.3.66/cmake/YARPConfigVersion.cmake
-C:/Program Files (x86)/robotology/yarp-2.3.66/cmake/YARPConfig.cmake
-C:/Program Files/CMake/share/cmake-3.7/Modules/CMakeDependentOption.cmake
-C:/Program Files (x86)/robotology/yarp-2.3.66/cmake/YARPTargets.cmake
-C:/Program Files (x86)/robotology/yarp-2.3.66/cmake/YARPTargets-debug.cmake
-C:/Program Files (x86)/robotology/yarp-2.3.66/cmake/YARPTargets-release.cmake
-C:/Program Files (x86)/robotology/yarp-2.3.66/share/yarp/cmake/YarpIDL.cmake
