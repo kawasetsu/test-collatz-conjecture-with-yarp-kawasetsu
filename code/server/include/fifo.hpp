@@ -7,7 +7,7 @@ using namespace std;
 using namespace yarp::os;
 
 class FIFO{
-    Semaphore Sema;
+	Semaphore Sema;
 	vector<int> vectFIFO;
 public:
 	FIFO();

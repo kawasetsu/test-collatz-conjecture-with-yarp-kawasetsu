@@ -1,23 +1,64 @@
 #include <iostream>
 #include <yarp/os/all.h>
-#include "fifo.hpp"
-#include "RFMS.hpp"
+#include "../common/vocabs.hpp"
+#include "FIFO.hpp"
+#include "Server.hpp"
 
 using namespace std;
 using namespace yarp::os;
 
-
-int main(int argc, char * argv[])
+double Server::getPeriod()
 {
-    Network yarp;	//initialize yarp
-    MyModule module;	//create module for maneging message and showing of the content of FIFO
+	return 1.0;     // module periodicity (seconds), called implicitly by the module.
+}
 
-    /* prepare and configure the resource finder */
-    ResourceFinder rf;
-    rf.configure(argc, argv);
-    rf.setVerbose(true);
-    cout << "Configuring and starting module. \n";
-    module.runModule(rf);   // This calls configure(rf) and, upon success, the module execution begins with a call to updateModule()
+// This is our main function. Will be called periodically every getPeriod() seconds
+bool Server::updateModule()
+{
+	Fifo.FIFO_show();
+	return true;
+}
+    
+// Message handler
+bool Server::respond(const Bottle& botRequest, Bottle& botCommand)
+{
+	if(botRequest.get(0).asInt() == COLLATZ_VOCAB_REQ_ITEM){           //check the header of received messages
+		Sem.wait();
+		if(botRequest.get(1).asInt() != 0){                     //first connection from client sends 0, so skip
+			//cout << "received num=" << botRequest.get(1).asInt() << endl;
+			Fifo.delete_element(botRequest.get(1).asInt());     //delete the received element from FIFO
+		}
 
-	return 0;
+		//increment and push back the natural N
+		intCNT++;
+		Fifo.enqueue(intCNT);
+
+		//make a command and send it
+		botCommand.addInt(COLLATZ_VOCAB_ITEM);
+		botCommand.addInt(intCNT);
+		botCommand.addInt(Fifo.head_value()-1);
+		Sem.post();
+		return true;
+	}
+	else{
+		cout << "receiced another message" << endl;
+		return false;
+	}
+}
+
+bool Server::configure(yarp::os::ResourceFinder &rf)
+{
+	intCNT=1;     //set initial value of the counter   
+	handlerPort.open("/server");
+	attach(handlerPort);	//messages received from the port are redirected to the respond method
+	return true;
+}
+
+// Close function, to perform cleanup.
+bool Server::close()
+{
+	//close port
+	cout << "Calling close function\n";
+	handlerPort.close();
+	return true;
 }

@@ -11,7 +11,7 @@ find_package(YARP REQUIRED)
 include_directories(include ${YARP_INCLUDE_DIRS})
 
 #set up my program
-add_executable(server server.cpp RFMS.cpp fifo.cpp)
+add_executable(server main.cpp Server.cpp FIFO.cpp)
 
 #link with YARP libraries
 target_link_libraries(server ${YARP_LIBRARIES})

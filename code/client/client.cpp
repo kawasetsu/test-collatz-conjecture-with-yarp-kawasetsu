@@ -1,25 +1,81 @@
 #include <iostream>
 #include <yarp/os/all.h>
-#include "RFMC.hpp"
+#include "../common/vocabs.hpp"
+#include "Client.hpp"
 
 using namespace std;
 using namespace yarp::os;
 
-int main(int argc, char * argv[])
+double Client::getPeriod()
 {
-	if(argc<2){
-		cout << "Please supply a port name of client, for example: --name /c1" << endl;
-		return 1;
-	}
+    return 0.01;        // module periodicity (seconds), called implicitly by the module.
+}
 
-	MyModule module;	//create module for maneging message
+bool Client::updateModule()
+{
+    Bottle botRequest;
+    Bottle botResponse;
 
-    /* prepare and configure the resource finder */
-    ResourceFinder rf;
-    rf.configure(argc, argv);
-    rf.setVerbose(true);
-    cout << "Configuring and starting module. \n";
-    module.runModule(rf);   // This calls configure(rf) and, upon success, the module execution begins with a call to updateModule()
+    //make request and send it
+    botRequest.addInt(COLLATZ_VOCAB_REQ_ITEM);
+    botRequest.addInt(intN);
+    bool result = handlerPort.write(botRequest, botResponse);   //request and wait response
 
-	return 0;
+    //cout << "intN=" << intN << endl;
+    if(result){
+        if(botResponse.get(0).asInt() == COLLATZ_VOCAB_ITEM){       //check the identifier of the received message
+            intN = botResponse.get(1).asInt();
+            intTh = botResponse.get(2).asInt();
+            cout << "input number:" << intN << ", input threshold:" << intTh << endl;
+
+            //calculate collaz conjecture
+            int intTempN = intN;
+            while(intTempN > intTh){    //calculation result becomes below threshold
+                if(intTempN % 2 == 0){
+                    intTempN = intTempN / 2;
+                }
+                else{
+                    intTempN = intTempN * 3 + 1;
+                }
+            }
+            //cout << "finished" << endl;
+        }else{
+            cout << "receiced another message" << endl;
+        }
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+// Message handler
+bool Client::respond(const Bottle& botResponse, Bottle& botCommand)
+{    
+    return true;
+}
+
+bool Client::configure(yarp::os::ResourceFinder &rf)
+{
+    intN = 0;
+    intTh = 0;
+    handlerPort.open(rf.find("name").asString());
+
+    cout << "Trying to connect to server" << endl;
+    yarp.connect(rf.find("name").asString() , "/server");
+
+    if(handlerPort.getOutputCount() == 0){
+        cout << "cannot connect to /server" << endl;
+        return false;
+    }
+
+    return true;
+}
+
+// Close function, to perform cleanup.
+bool Client::close()
+{
+    cout << "Calling close function\n";
+    handlerPort.close();    //close port
+    return true;
 }

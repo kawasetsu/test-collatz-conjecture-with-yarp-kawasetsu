@@ -11,7 +11,7 @@ find_package(YARP REQUIRED)
 include_directories(include ${YARP_INCLUDE_DIRS})
 
 #set up my program
-add_executable(client client.cpp RFMC.cpp)
+add_executable(client main.cpp Client.cpp)
 
 #link with YARP libraries
 target_link_libraries(client ${YARP_LIBRARIES})

@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <yarp/os/all.h>
-#include "fifo.hpp"
+#include "FIFO.hpp"
 
 using namespace std;
 using namespace yarp::os;
