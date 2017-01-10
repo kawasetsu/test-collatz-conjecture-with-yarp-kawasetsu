@@ -7,7 +7,7 @@ using namespace std;
 using namespace yarp::os;
 
 class FIFO{
-	Semaphore Sema;
+	Semaphore sema;
 	vector<int> vectFIFO;
 public:
 	FIFO();
@@ -15,7 +15,7 @@ public:
 	bool dequeue();
 	int head_value();
 	void delete_element(int intNatural);
-	void FIFO_show();
+	void show();
 };
 
 #endif

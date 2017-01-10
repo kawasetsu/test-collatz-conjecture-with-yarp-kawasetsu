@@ -12,14 +12,14 @@ int main(int argc, char * argv[])
 		return 1;
 	}
 
-	Client ClieModule;	//create module for maneging message
+	Client clieModule;	//create module for maneging message
 
 	/* prepare and configure the resource finder */
 	ResourceFinder rf;
 	rf.configure(argc, argv);
 	rf.setVerbose(true);
 	cout << "Configuring and starting module. \n";
-	ClieModule.runModule(rf);   // This calls configure(rf) and, upon success, the module execution begins with a call to updateModule()
+	clieModule.runModule(rf);   // This calls configure(rf) and, upon success, the module execution begins with a call to updateModule()
 
 	return 0;
 }

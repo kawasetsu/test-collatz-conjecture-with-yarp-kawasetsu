@@ -9,8 +9,8 @@ using namespace yarp::os;
 class Server:public RFModule
 {
 	RpcServer handlerPort; // a port to handle messages
-	FIFO Fifo;
-	Semaphore Sem;
+	FIFO fifo;
+	Semaphore sem;
 	int intCNT;
 public:
 	double getPeriod();
