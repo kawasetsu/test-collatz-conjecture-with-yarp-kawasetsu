@@ -14,7 +14,6 @@ class Client:public RFModule
 public:
 	double getPeriod();
 	bool updateModule();
-	bool respond(const Bottle& botResponse, Bottle& botCommand);
 	bool configure(yarp::os::ResourceFinder &rf);
 	bool close();
 };

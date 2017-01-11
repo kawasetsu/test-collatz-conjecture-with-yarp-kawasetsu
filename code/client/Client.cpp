@@ -49,12 +49,6 @@ bool Client::updateModule()
     }
 }
 
-// Message handler
-bool Client::respond(const Bottle& botResponse, Bottle& botCommand)
-{    
-    return true;
-}
-
 bool Client::configure(yarp::os::ResourceFinder &rf)
 {
     intN = 0;
