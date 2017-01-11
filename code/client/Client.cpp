@@ -8,7 +8,7 @@ using namespace yarp::os;
 
 double Client::getPeriod()
 {
-    return 0.01;        // module periodicity (seconds), called implicitly by the module.
+    return 0.2;        // module periodicity (seconds), called implicitly by the module.
 }
 
 bool Client::updateModule()
@@ -62,7 +62,7 @@ bool Client::configure(yarp::os::ResourceFinder &rf)
     handlerPort.open(rf.find("name").asString());
 
     cout << "Trying to connect to server" << endl;
-    yarp.connect(rf.find("name").asString() , "/server");
+    yarp.connect(rf.find("name").asString(), "/server");
 
     if(handlerPort.getOutputCount() == 0){
         cout << "cannot connect to /server" << endl;
