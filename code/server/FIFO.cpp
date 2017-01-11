@@ -17,18 +17,6 @@ void FIFO::enqueue(int intEnqData)	//enqueue the argument "intEnqData"
 	sema.post();
 }
 
-bool FIFO::dequeue()		//dequeue the first element of FIFO
-{
-	if(!vectFIFO.empty()){
-		sema.wait();
-		vectFIFO.erase(vectFIFO.begin());
-		sema.post();
-		return true;
-	}else{
-		return false;
-	}
-}
-
 int FIFO::head_value()	//return the value of the first element of FIFO
 {
 	return (vectFIFO.front());
@@ -51,12 +39,12 @@ void FIFO::delete_element(int intNatural)	//delete the element of FIFO corespoin
 void FIFO::show()
 {
 	if(!vectFIFO.empty()){
-		cout << "[" ;
+		cout << "pending numbers: " ;
 		sema.wait();
 		for(int i = 0; i < vectFIFO.size(); i++){
 			cout << vectFIFO[i] << " " ;
 		}
 		sema.post();
-		cout << "]" << endl;
+		cout << endl;
 	}
 }

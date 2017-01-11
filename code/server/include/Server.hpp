@@ -13,10 +13,10 @@ class Server:public RFModule
 	Semaphore sem;
 	int intCNT;
 public:
+	bool configure(yarp::os::ResourceFinder &rf);
 	double getPeriod();
 	bool updateModule();
 	bool respond(const Bottle& botResponse, Bottle& botCommand);
-	bool configure(yarp::os::ResourceFinder &rf);
 	bool close();
 };
 

@@ -12,7 +12,6 @@ class FIFO{
 public:
 	FIFO();
 	void enqueue(int intEnqData);
-	bool dequeue();
 	int head_value();
 	void delete_element(int intNatural);
 	void show();

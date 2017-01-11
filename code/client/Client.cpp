@@ -6,6 +6,23 @@
 using namespace std;
 using namespace yarp::os;
 
+bool Client::configure(yarp::os::ResourceFinder &rf)
+{
+    intN = 0;
+    intTh = 0;
+    handlerPort.open(rf.find("name").asString());
+
+    cout << "Trying to connect to server" << endl;
+    yarp.connect(rf.find("name").asString(), "/server");
+
+    if(handlerPort.getOutputCount() == 0){
+        cout << "cannot connect to /server" << endl;
+        return false;
+    }
+
+    return true;
+}
+
 double Client::getPeriod()
 {
     return 0.2;        // module periodicity (seconds), called implicitly by the module.
@@ -21,7 +38,6 @@ bool Client::updateModule()
     botRequest.addInt(intN);
     bool result = handlerPort.write(botRequest, botResponse);   //request and wait response
 
-    //cout << "intN=" << intN << endl;
     if(result){
         if(botResponse.get(0).asInt() == COLLATZ_VOCAB_ITEM){       //check the identifier of the received message
             intN = botResponse.get(1).asInt();
@@ -49,27 +65,10 @@ bool Client::updateModule()
     }
 }
 
-bool Client::configure(yarp::os::ResourceFinder &rf)
-{
-    intN = 0;
-    intTh = 0;
-    handlerPort.open(rf.find("name").asString());
-
-    cout << "Trying to connect to server" << endl;
-    yarp.connect(rf.find("name").asString(), "/server");
-
-    if(handlerPort.getOutputCount() == 0){
-        cout << "cannot connect to /server" << endl;
-        return false;
-    }
-
-    return true;
-}
-
 // Close function, to perform cleanup.
 bool Client::close()
 {
-    cout << "Calling close function\n";
+    cout << "Calling close function" << endl;
     handlerPort.close();    //close port
     return true;
 }

@@ -7,6 +7,14 @@
 using namespace std;
 using namespace yarp::os;
 
+bool Server::configure(yarp::os::ResourceFinder &rf)
+{
+	intCNT=1;     //set initial value of the counter   
+	handlerPort.open("/server");
+	attach(handlerPort);	//messages received from the port are redirected to the respond method
+	return true;
+}
+
 double Server::getPeriod()
 {
 	return 1.0;     // call update module every 1 sec.
@@ -46,19 +54,11 @@ bool Server::respond(const Bottle& botRequest, Bottle& botCommand)
 	}
 }
 
-bool Server::configure(yarp::os::ResourceFinder &rf)
-{
-	intCNT=1;     //set initial value of the counter   
-	handlerPort.open("/server");
-	attach(handlerPort);	//messages received from the port are redirected to the respond method
-	return true;
-}
-
 // Close function, to perform cleanup.
 bool Server::close()
 {
 	//close port
-	cout << "Calling close function\n";
+	cout << "Calling close function" << endl;
 	handlerPort.close();
 	return true;
 }

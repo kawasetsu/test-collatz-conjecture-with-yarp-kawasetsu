@@ -12,9 +12,9 @@ class Client:public RFModule
 	int intN;
 	int intTh;
 public:
+	bool configure(yarp::os::ResourceFinder &rf);
 	double getPeriod();
 	bool updateModule();
-	bool configure(yarp::os::ResourceFinder &rf);
 	bool close();
 };
 
