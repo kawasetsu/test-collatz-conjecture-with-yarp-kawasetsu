@@ -6,23 +6,27 @@
 using namespace std;
 using namespace yarp::os;
 
-FIFO::FIFO()	//constructor
+//constructor
+FIFO::FIFO()
 {
 }
 
-void FIFO::enqueue(int intEnqData)	//enqueue the argument "intEnqData"
+//enqueue the argument "intEnqData"
+void FIFO::enqueue(int intEnqData)
 {
 	sema.wait();
 	vectFIFO.push_back(intEnqData);
 	sema.post();
 }
 
-int FIFO::head_value()	//return the value of the first element of FIFO
+//return the value of the first element of FIFO
+int FIFO::head_value()
 {
 	return (vectFIFO.front());
 }
 
-void FIFO::delete_element(int intNatural)	//delete the element of FIFO corespoinding to the argument "intNatural"
+//delete the element of FIFO corespoinding to the argument "intNatural"
+void FIFO::delete_element(int intNatural)
 {
 	if(!vectFIFO.empty()){
 		sema.wait();

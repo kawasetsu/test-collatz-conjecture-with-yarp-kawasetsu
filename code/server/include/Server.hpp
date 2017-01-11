@@ -8,12 +8,12 @@ using namespace yarp::os;
 
 class Server:public RFModule
 {
-	RpcServer handlerPort; // a port to handle messages
+	RpcServer handlerPort;
 	FIFO fifo;
 	Semaphore sem;
 	int intCNT;
 public:
-	bool configure(yarp::os::ResourceFinder &rf);
+	bool configure(ResourceFinder &rf);
 	double getPeriod();
 	bool updateModule();
 	bool respond(const Bottle& botResponse, Bottle& botCommand);

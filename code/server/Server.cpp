@@ -7,41 +7,47 @@
 using namespace std;
 using namespace yarp::os;
 
-bool Server::configure(yarp::os::ResourceFinder &rf)
+bool Server::configure(ResourceFinder &rf)
 {
-	intCNT=1;     //set initial value of the counter   
+	//set initial value of the counter  
+	intCNT=1; 
+
+	//messages received from the port are redirected to the respond method
 	handlerPort.open("/server");
-	attach(handlerPort);	//messages received from the port are redirected to the respond method
+	attach(handlerPort);
 	return true;
 }
 
 double Server::getPeriod()
 {
-	return 1.0;     // call update module every 1 sec.
+	// call update module every 1 sec.
+	return 1.0;
 }
 
-// This is our main function. Will be called periodically every getPeriod() seconds
 bool Server::updateModule()
 {
+	// print pending numbers in FIFO
 	fifo.show();
 	return true;
 }
-    
-// Message handler
+
 bool Server::respond(const Bottle& botRequest, Bottle& botCommand)
 {
-	if(botRequest.get(0).asInt() == COLLATZ_VOCAB_REQ_ITEM){           //check the header of received messages
+	//check the header of received messages
+	if(botRequest.get(0).asInt() == COLLATZ_VOCAB_REQ_ITEM){
+		//to avoid conflict of data access
 		sem.wait();
-		if(botRequest.get(1).asInt() != 0){                     //first connection from client sends 0, so skip
-			//cout << "received num=" << botRequest.get(1).asInt() << endl;
-			fifo.delete_element(botRequest.get(1).asInt());     //delete the received element from FIFO
+		//first connection from client sends 0, so skip
+		if(botRequest.get(1).asInt() != 0){
+			//delete the received element from FIFO
+			fifo.delete_element(botRequest.get(1).asInt());
 		}
 
-		//increment and push back the natural N
+		//increment and push back the positive integer N
 		intCNT++;
 		fifo.enqueue(intCNT);
 
-		//make a command and send it
+		//make a command and send it to client
 		botCommand.addInt(COLLATZ_VOCAB_ITEM);
 		botCommand.addInt(intCNT);
 		botCommand.addInt(fifo.head_value()-1);
@@ -54,7 +60,6 @@ bool Server::respond(const Bottle& botRequest, Bottle& botCommand)
 	}
 }
 
-// Close function, to perform cleanup.
 bool Server::close()
 {
 	//close port

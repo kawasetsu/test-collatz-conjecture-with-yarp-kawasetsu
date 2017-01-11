@@ -6,18 +6,19 @@
 using namespace std;
 using namespace yarp::os;
 
-
 int main(int argc, char * argv[])
 {
-	Network yarp;		//initialize yarp
-	Server servModule;	//create module for maneging message and showing of the content of FIFO
+	//initialize yarp and instantiate server module for maneging message and showing of the content of FIFO
+	Network yarp;
+	Server servModule;
 
-	/* prepare and configure the resource finder */
+	//prepare and configure the resource finder
 	ResourceFinder rf;
 	rf.configure(argc, argv);
 	rf.setVerbose(true);
-	cout << "Configuring and starting module. \n";
-	servModule.runModule(rf);   // This calls configure(rf) and, upon success, the module execution begins with a call to updateModule()
+	cout << "Configuring and starting module" << endl;
+	//run the module
+	servModule.runModule(rf);
 
 	return 0;
 }
