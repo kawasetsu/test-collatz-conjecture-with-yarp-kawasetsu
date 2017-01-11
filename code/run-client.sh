@@ -1,0 +1,1 @@
+xterm -hold -e "./build/client/client --name $1; bash" &

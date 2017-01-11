@@ -1,0 +1,1 @@
+xterm -hold -e "./build/server/server; bash" &
