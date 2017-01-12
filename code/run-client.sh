@@ -1,0 +1,1 @@
+xterm -fa 'Monospace' -fs 12 -hold -e "./build/client/client --name $1; bash" &

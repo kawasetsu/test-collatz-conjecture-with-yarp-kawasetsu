@@ -1,0 +1,1 @@
+xterm -fa 'Monospace' -fs 12 -hold -e "./build/server/server; bash" &
