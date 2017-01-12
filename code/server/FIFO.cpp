@@ -22,7 +22,13 @@ void FIFO::enqueue(int intEnqData)
 //return the value of the first element of FIFO
 int FIFO::head_value()
 {
-	return (vectFIFO.front());
+	int intFront;
+	
+	sema.wait();
+	intFront = vectFIFO.front();
+	sema.poset
+
+	return (intFront);
 }
 
 //delete the element of FIFO corespoinding to the argument "intNatural"
