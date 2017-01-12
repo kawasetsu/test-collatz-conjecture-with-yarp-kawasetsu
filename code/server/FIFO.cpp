@@ -26,7 +26,7 @@ int FIFO::head_value()
 	
 	sema.wait();
 	intFront = vectFIFO.front();
-	sema.poset
+	sema.post();
 
 	return (intFront);
 }
